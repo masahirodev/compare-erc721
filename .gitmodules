@@ -10,3 +10,9 @@
 [submodule "lib/solmate"]
 	path = lib/solmate
 	url = https://github.com/transmissions11/solmate
+[submodule "lib/ERC721Psi"]
+	path = lib/ERC721Psi
+	url = https://github.com/estarriolvetch/ERC721Psi
+[submodule "lib/solidity-bits"]
+	path = lib/solidity-bits
+	url = https://github.com/estarriolvetch/solidity-bits

@@ -1,0 +1,76 @@
+{
+  "result": {
+    "mint10premint1": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 251404,
+      "mintAverage": 25140,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    },
+    "mint10premint1000": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 251404,
+      "mintAverage": 25140,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    },
+    "mint10premint10000": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 251404,
+      "mintAverage": 25140,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    },
+    "mint1premint1": {
+      "burnFirst": 4203,
+      "burnLast": 0,
+      "mint": 47945,
+      "mintAverage": 47945,
+      "transferFromFirst": 28435,
+      "transferFromLast": 0
+    },
+    "mint1premint1000": {
+      "burnFirst": 4203,
+      "burnLast": 0,
+      "mint": 25945,
+      "mintAverage": 25945,
+      "transferFromFirst": 28435,
+      "transferFromLast": 0
+    },
+    "mint1premint10000": {
+      "burnFirst": 4203,
+      "burnLast": 0,
+      "mint": 25945,
+      "mintAverage": 25945,
+      "transferFromFirst": 28435,
+      "transferFromLast": 0
+    },
+    "mint5premint1": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 126149,
+      "mintAverage": 25229,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    },
+    "mint5premint1000": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 126149,
+      "mintAverage": 25229,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    },
+    "mint5premint10000": {
+      "burnFirst": 4203,
+      "burnLast": 4203,
+      "mint": 126149,
+      "mintAverage": 25229,
+      "transferFromFirst": 28435,
+      "transferFromLast": 6535
+    }
+  }
+}
