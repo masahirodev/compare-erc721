@@ -7,6 +7,9 @@ import "erc721a/contracts/extensions/ERC721ABurnable.sol";
 contract Erc721 is ERC721A, ERC721ABurnable {
     constructor() ERC721A("ERC721A", "AZUKI") {}
 
+    /// @dev Exceeds supply.
+    error ExceedSupply();
+
     function mint(uint256 quantity) external payable {
         // `_mint`'s second argument now takes in a `quantity`, not a `tokenId`.
         _mint(msg.sender, quantity);
@@ -24,5 +27,13 @@ contract Erc721 is ERC721A, ERC721ABurnable {
      */
     function burn(uint256 tokenId) public override {
         super.burn(tokenId);
+    }
+
+    function supplyCheckMint(uint256 quantity) external payable {
+        if (totalSupply() + quantity > 10_000) {
+            revert ExceedSupply();
+        }
+
+        _mint(msg.sender, quantity);
     }
 }

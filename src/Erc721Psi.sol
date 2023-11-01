@@ -7,6 +7,11 @@ import "erc721psi/contracts/extension/ERC721PsiBurnable.sol";
 contract Erc721 is ERC721PsiBurnable {
     constructor() ERC721Psi("ERC721Psi", "ADVENTURER") {}
 
+    uint256 private counter;
+
+    /// @dev Exceeds supply.
+    error ExceedSupply();
+
     function mint(uint256 quantity) external payable {
         // _safeMint's second argument now takes in a quantity, not a tokenId. (same as ERC721A)
         _mint(msg.sender, quantity);
@@ -26,5 +31,20 @@ contract Erc721 is ERC721PsiBurnable {
         address owner = ownerOf(tokenId);
         require(msg.sender == owner, "Not the owner");
         _burn(tokenId);
+    }
+
+    // function supplyCheckMint(uint256 quantity) external payable {
+    //     if (totalSupply() + quantity > 10_000) {
+    //         revert ExceedSupply();
+    //     }
+    //     _mint(msg.sender, quantity);
+    // }
+
+    function supplyCheckMint(uint256 quantity) external payable {
+        if (counter + quantity > 10_000) {
+            revert ExceedSupply();
+        }
+        counter = counter + quantity;
+        _mint(msg.sender, quantity);
     }
 }

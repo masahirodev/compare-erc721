@@ -8,6 +8,9 @@ contract Erc721 is ERC721 {
 
     constructor() ERC721("ERC721Solmate", "MTK") {}
 
+    /// @dev Exceeds supply.
+    error ExceedSupply();
+
     function mint(uint256 quantity) external payable {
         for (uint256 i = 0; i < quantity;) {
             _mint(msg.sender, currentTokenId);
@@ -34,5 +37,20 @@ contract Erc721 is ERC721 {
         _burn(tokenId);
     }
 
+    function supplyCheckMint(uint256 quantity) external payable {
+        if (currentTokenId + quantity > 10_000) {
+            revert ExceedSupply();
+        }
+
+        for (uint256 i = 0; i < quantity;) {
+            _mint(msg.sender, currentTokenId);
+            unchecked {
+                currentTokenId++;
+                i++;
+            }
+        }
+    }
+
+    // ---------- The following functions are overrides required by Solidity.---------- //
     function tokenURI(uint256 id) public view override returns (string memory) {}
 }

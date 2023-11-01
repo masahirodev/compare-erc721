@@ -10,12 +10,14 @@ contract Erc721 is ERC721, ERC721Enumerable, ERC721Burnable {
 
     constructor() ERC721("ERC721Oz", "MTK") {}
 
+    /// @dev Exceeds supply.
+    error ExceedSupply();
+
     /**
      * @dev no need to reentrancy guard
      * not allowed to mint from other contracts
      */
     function mint(uint256 quantity) external payable {
-        // require(totalSupply() < 10, "All tokens are minted!");
         for (uint256 i = 0; i < quantity;) {
             _mint(msg.sender, _nextTokenId);
             unchecked {
@@ -39,6 +41,25 @@ contract Erc721 is ERC721, ERC721Enumerable, ERC721Burnable {
         super.burn(tokenId);
     }
 
+    function supplyCheckMint(uint256 quantity) external payable {
+        // if (totalSupply() + quantity > 10_000) {
+        //     revert ExceedSupply();
+        // }
+
+        if (_nextTokenId + quantity > 10_000) {
+            revert ExceedSupply();
+        }
+
+        for (uint256 i = 0; i < quantity;) {
+            _mint(msg.sender, _nextTokenId);
+            unchecked {
+                _nextTokenId++;
+                i++;
+            }
+        }
+    }
+
+    // ---------- The following functions are overrides required by Solidity.---------- //
     function _update(address to, uint256 tokenId, address auth)
         internal
         override(ERC721, ERC721Enumerable)
